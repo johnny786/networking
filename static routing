@@ -1,0 +1,44 @@
+Routing protocol is bassically 2 types.they are
+   1)static routing
+   2)Dynamic routing
+   
+  Static routing is the most secure way of routing.
+  Advantage of static routing:
+  ----------------------------
+      1)easy to implement
+      2)it is most secure way of routing ,scince no information is shared with other routers
+      3)it puts no overhead on resources such as cpu or memory
+      
+      
+   Disadvantage of static routing:
+    ------------------------------
+    
+     1)Only suitable for small networks
+     2)if a link fails it cannot reroute the traffic
+     
+     
+     CONFIGURATION:-                                    -----------
+     --------------                               :==>    '    Router 1         '
+                                                :        '-------------'
+                                              :
+                                            : 
+                                          :   
+                          --------------<==:
+                         '     router 0         '
+                         '--------------'
+    ---------
+    ROUTER 0:'
+    ---------'
+     #enable
+     # configure terminal
+     (config)#interface fastEthernet 0/0
+     (config-if)#ip address 10.0.0.1 255.0.0.0
+     (config-if)#no shutdown
+     (config-if)#clock rate 64000
+     (config-if)#bandwidth 64   //control the data flow between serial links and need to be set a service providers end.
+     (config-if)#exit
+     #show controllers serial 0/0/0   //to show the privilege mode to check the cables(that means hardware properties).
+     
+    (config)# ip route 20.0.0.0 255.0.0.0 192.168.0.254   //this is the basic command to configure the router as static route for all routers communicate as source ip and destination ip communicating.
+    
+   
