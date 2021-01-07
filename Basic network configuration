@@ -1,0 +1,43 @@
+#Download putty  in linux or minicom in linux to configure a networking device with help of ssh,serial,telnet Protocols.
+Remember the port numbers
+SSH ==>port number 22
+Rlogin===> port number 513
+Telnet===> port number 23.
+If you are using serial port then you can set the baud rate .9600 or 112200 youcan set this two.
+
+
+Configuration:
+--------------
+
+#enable
+#show running-configuration // to display the whatever configuraton running into the router it will displays the all commands configurations
+#configure terminal
+(config)#hostname Name   //to give the name of a router
+(config)# enable password password //to allocate password to the router
+(config)#enable secret SecretPassword //to give the secret password
+(config)#service password-encryption //to unable to identify the secret and normal Passwords(that means encription)
+(config)#system disble Password recovery switch all    //To disable the password recovery
+
+
+
+###################TEKNET CONFIGURATION#############################
+(config)#line vty 0 14   //Configure the number of telnet sessions(lines),and enters configuration mode
+(config)#line console 0  //Enters line configuration mode,and configures the console port(line 0)
+(config-line)#password Password //specify a password to enter into a router through telnet or ssh
+
+
+###########CONFIGURE USER NAME AND PASSWORD PAIRS##################
+router#configure terminal
+(config)#username name privilege 1 password Secretpassword
+(config)#username name mac attribute //To Allow Particular Mac address to allow the router
+
+
+
+
+
+############CONFIGURE AAA Authentication for login##############################
+TO ENABLE AUTHENTICATION,AUTHORIZATION,AND ACCOUNTING Athuntification for logins,use the login authentication command in line configuration mode.
+
+#configure terminal
+(config)#aaa new-model
+(config)#aaa authentication login my-auth-list 
